@@ -32,39 +32,50 @@ This system allows for a variety of data analysis queries to gain insights into 
 Query to analyze the distribution of different blood types among donors and receivers:
 
 -- Distribution of blood types among donors
+ ```
 SELECT Blood_type, COUNT(*) AS num_of_donors
 FROM Doner
 GROUP BY Blood_type;
+ ```
 
 -- Distribution of blood types among receivers
+ ```
 SELECT Blood_type, COUNT(*) AS num_of_receivers
 FROM Receiver
 GROUP BY Blood_type;
+ ```
 
 2. Average Age of Donors and Receivers
 Query to calculate the average age of donors and receivers:
 
 -- Average age of donors
+ ```
 SELECT AVG(age) AS avg_donor_age
 FROM Doner;
+ ```
 
 -- Average age of receivers
+ ```
 SELECT AVG(age) AS avg_receiver_age
 FROM Receiver;
+ ```
 
 3. Blood Donations by Blood Bank
 Analyze the total amount of blood donated at each blood bank:
 
 -- Total blood donations per blood bank
+ ```
 SELECT Blood_Bank.address, SUM(Blood.amount) AS total_blood_donated
 FROM Blood
 JOIN Blood_Bank ON Blood.bank_id = Blood_Bank.bank_id
 GROUP BY Blood_Bank.address;
+ ```
 
 4. Appointment History
 Query to retrieve a log of appointments, including the donor, receiver, nurse, and hospital involved:
 
 -- Appointment details
+ ```
 SELECT Doner.name AS Donor, Receiver.name AS Receiver, Nurse.name AS Nurse, Hospital.name AS Hospital, Appointment.appdate, Appointment.apptime
 FROM Appointment
 JOIN Doner ON Appointment.donerID = Doner.donerID
@@ -72,11 +83,13 @@ JOIN Receiver ON Appointment.receiverID = Receiver.receiverID
 JOIN Nurse ON Appointment.nurseID = Nurse.nurseID
 JOIN Hospital ON Appointment.hosp_id = Hospital.hosp_id
 ORDER BY Appointment.appdate;
+ ```
 
 5. Blood Stock per Blood Type
 Query to check the amount of available blood for each blood type:
 
 -- Total available blood per blood type
+ ```
 SELECT Blood_type, SUM(amount) AS total_amount
 FROM Blood
 GROUP BY Blood_type;
@@ -118,6 +131,5 @@ The system defines four user roles:
 - Analytics: Integrate reports and dashboards for analyzing donor trends, blood demand, and supply.
 
 ## Conclusion
-
 The Blood Bank Management System provides a comprehensive solution to manage the operations of blood banks, from tracking donations and receipts to managing appointments and staff. It ensures data integrity and efficient retrieval of information, essential for the smooth functioning of blood banks.
 
