@@ -95,6 +95,16 @@ FROM Blood
 GROUP BY Blood_type;
 ```
 
+6.  Doners By Gender
+Query to count the number of doners by gender:
+
+-- Count Number of Doners Grouped By Gender
+```
+SELECT gender, COUNT(donerID) AS total_donors
+FROM Doner
+GROUP BY gender;
+```
+
 ## User Roles
 
 The system defines four user roles:
